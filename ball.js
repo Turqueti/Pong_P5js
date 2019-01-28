@@ -34,7 +34,7 @@ function Bola(x,y,diametro,velocidadex,velocidadey) {
 
 		if( dist(pontoProximo[0],pontoProximo[1],this.x,this.y) < this.diametro / 2){
 			console.log(dist(pontoProximo[0],pontoProximo[1],this.x,this.y));
-			fill('red');
+			//fill('red');
 			return true;
 		}
 		return false;
@@ -42,18 +42,19 @@ function Bola(x,y,diametro,velocidadex,velocidadey) {
 
 
 
-	this.mexe = function(player1){
+	this.mexe = function(players){
 		this.x = this.x + this.velocidadex;
 		this.y = this.y + this.velocidadey;
 
-		if(this.colide(player1)){
+		if(this.colide(players[0]) || this.colide(players[1]) ){
 			this.velocidadex = - this.velocidadex;
 		}
 
 		//faz bater nas paredes
-		// if (this.x > width || this.x < 0){
-		//
-		// }
+		if (this.x > width || this.x < 0){
+			this.x = width/2;
+			this.y = height/2;
+		}
 
 
 
